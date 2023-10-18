@@ -1,0 +1,39 @@
+<html>
+
+<head>
+    <title>Home Page</title>
+</head>
+
+<h2>Home Page</h2>
+<body onload="checkdata()">
+    <script>
+
+        function checkdata() {
+            var logincheck = localStorage.getItem("is_loggedin");
+            var userdata = JSON.parse(localStorage.getItem("userdata"));
+            console.log(userdata);
+            if (logincheck === true) {
+                window.location = 'http://127.0.0.1:5500/src/signin.html';
+            } else {
+
+                document.getElementById('myid').innerHTML = "Hi, " + userdata.username;
+            }
+        }
+
+        function doLogout() {
+            localStorage.removeItem('is_loggedin');
+            window.location = 'http://127.0.0.1:5500/src/signin.html';
+            alert('Logout Successfully!');
+        }
+        function deleteAccount() {
+            localStorage.clear();
+            window.location = 'http://127.0.0.1:5500/src/signin.html';
+            alert('Delete Account successfully!');
+        }
+    </script>
+    <p id="myid"></p>
+    <a href="signup.html" onclick="deleteAccount()">Delete Account?</a>
+    <a href="#" onclick="doLogout()">Logout</a>
+</body>
+
+</html>

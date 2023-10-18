@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="App.css">
+    <title>SignIn Form</title>
+</head>
+
+<body>
+
+    <h2>Login</h2>
+    Email : <input type="text" name="txt1" id="txt1" /> <br /> <br />
+    Password : <input type="password" name="txt2" id="txt2" /> <br /> <br />
+    <input type="button" value="SignIn" onclick="signin()" />
+    <a href="signup.html"> | Registration</a>
+    <script>
+
+        function signin(event) {
+
+            var txtemail = document.getElementById("txt1").value;
+            var txtpassword = document.getElementById("txt2").value;
+
+            var objectdata = JSON.parse(localStorage.getItem("userdata"));
+
+            if (objectdata != null) {
+                if (objectdata.email == txtemail && objectdata.password == txtpassword) {
+                    window.location = 'http://127.0.0.1:5500/src/home.html';
+                    localStorage.setItem('is_loggedin', true);
+                    alert('Signin Successfully!');
+                } else {
+                    alert("Login failed");
+                }
+            } else {
+                alert("User Not Found ");
+            }
+            event.preventDefault();
+        }
+    </script>
+    <a href="forgetpassword.html" onclick="changePassword()"> | Change Password</a>
+</body>
+
+</html>

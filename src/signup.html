@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="App.css">
+    <title>Signup Form</title>
+</head>
+
+<body>
+
+    <h2>Sign Up</h2>
+    Name : <input type="text" name="txt1" id="txt1" /> <br /><br />
+    Mobile : <input type="text" name="txt2" id="txt2" /> <br /> <br />
+    Email : <input type="text" name="txt3" id="txt3" /> <br /> <br />
+    Password : <input type="password" name="txt4" id="txt4" /> <br /> <br />
+
+    <input type="button" value="Signup" onclick="Signup()" />
+
+    <a href="Signin.html"> | Login</a>
+
+    <script>
+        function Signup() {
+            var username = document.getElementById("txt1").value;
+            var mobile = document.getElementById("txt2").value;
+            var email = document.getElementById("txt3").value;
+            var password = document.getElementById("txt4").value;
+
+            var userobject = {
+                username: username,
+                mobile: mobile,
+                email: email,
+                password: password,
+            };
+            var mydata = JSON.stringify(userobject);
+            localStorage.setItem("userdata", mydata);
+            window.location = 'http://127.0.0.1:5500/src/signin.html';
+            alert('Signup Successfully!');
+        }
+    </script>
+
+</body>
+
+</html>
